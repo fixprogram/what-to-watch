@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When user artist song is not sent 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  data-key="id1"
+  onMouseOut={[MockFunction]}
+  onMouseOver={[MockFunction]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <img
+      alt="Movie"
+      height="175"
+      src="path"
+      width="280"
+    />
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="movie-page.html"
+    >
+      Movie
+    </a>
+  </h3>
+</article>
+`;
