@@ -9,20 +9,27 @@ export default class Catalog extends React.Component {
     this.state = {
       activeMovie: ``
     };
+
+  }
+
+  setActive(target, id) {
+    target.style.transform = `scale(1.2)`;
+    target.style.zIndex = `3`;
+    this.setState({
+      activeMovie: id
+    });
+  }
+
+  setPassive(target) {
+    target.style.transform = null;
+    target.style.zIndex = null;
+    this.setState({
+      activeMovie: ``
+    });
   }
 
   render() {
     const {films} = this.props;
-
-    const onHover = (evt) => {
-      evt.currentTarget.style.transform = `scale(1.2)`;
-      evt.currentTarget.style.zIndex = `3`;
-      this.setState({activeMovie: evt.currentTarget.dataset.key});
-    };
-    const outHover = (evt) => {
-      evt.currentTarget.style.transform = null;
-      evt.currentTarget.style.zIndex = null;
-    };
 
     return (
       <div className="page-content">
@@ -66,10 +73,12 @@ export default class Catalog extends React.Component {
             {films.map((it) => {
               return <SmallMovieCard key={it.id}
                 id={it.id}
+                activeMovie={this.state.activeMovie}
+                src={it.src}
                 picture={it.moviePicture}
                 title={it.movieTitle}
-                onHover={(evt) => onHover(evt)}
-                outHover={(evt) => outHover(evt)}
+                setActive={(evt, id) => this.setActive(evt, id)}
+                setPassive={(evt) => this.setPassive(evt)}
               />;
             })}
           </div>
